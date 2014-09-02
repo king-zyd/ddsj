@@ -1,5 +1,5 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<@master template="layout/master">
+<div class="content">
+
+</div>
+</@master>

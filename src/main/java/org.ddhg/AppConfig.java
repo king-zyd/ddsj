@@ -1,4 +1,4 @@
-package org.ddsj.web;
+package org.ddhg;
 
 import com.zyd.core.database.ConnectionPoolDataSource;
 import com.zyd.core.database.JPAAccess;
@@ -11,8 +11,10 @@ import org.hibernate.dialect.MySQLDialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.util.StringUtils;
 
 import javax.inject.Inject;
@@ -44,6 +46,13 @@ public class AppConfig extends DefaultAppConfig {
         vendorAdapter.setShowSql(true);
         factoryBean.setJpaVendorAdapter(vendorAdapter);
         return factoryBean;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setDataSource(dataSource());
+        return transactionManager;
     }
 
     @Bean

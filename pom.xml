@@ -2,13 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.zyd</groupId>
-    <artifactId>ddsj</artifactId>
+    <artifactId>ddhg</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>DDSJ Webapp</name>
+    <name>DDHG Webapp</name>
 
     <properties>
-        <jetty.context>/ddsj</jetty.context>
+        <jetty.context>/ddhg</jetty.context>
         <jetty.http.port>8080</jetty.http.port>
         <jetty.https.port>8443</jetty.https.port>
         <jetty.stopPort>9080</jetty.stopPort>

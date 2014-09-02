@@ -1,15 +1,11 @@
-package org.ddsj.web;
+package org.ddhg;
 
 import com.zyd.core.platform.AbstractSiteConfig;
 import com.zyd.core.platform.PlatformScopeResolver;
 import com.zyd.core.platform.web.DeploymentSettings;
 import com.zyd.core.platform.web.site.SiteSettings;
-import com.zyd.core.platform.web.site.layout.ModelBuilderInterceptor;
 import com.zyd.core.platform.web.site.session.SessionProviderType;
 import com.zyd.core.util.TimeLength;
-import org.ddsj.web.annotation.MasterLayout;
-import org.ddsj.web.interceptor.MasterTemplateModelBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -67,13 +63,6 @@ public class WebConfig extends AbstractSiteConfig {
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
-    @Bean
-    public ModelBuilderInterceptor modelBuilderInterceptor() {
-        ModelBuilderInterceptor interceptor = new ModelBuilderInterceptor();
-        interceptor.registerModelBuilder(MasterLayout.class, MasterTemplateModelBuilder.class);
-        return interceptor;
-    }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(exceptionInterceptor());
@@ -81,7 +70,6 @@ public class WebConfig extends AbstractSiteConfig {
         registry.addInterceptor(httpSchemeEnforceInterceptor());
         registry.addInterceptor(cookieInterceptor());
         registry.addInterceptor(sessionInterceptor());
-        registry.addInterceptor(modelBuilderInterceptor());
     }
 
     @Override
